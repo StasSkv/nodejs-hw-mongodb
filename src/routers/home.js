@@ -1,6 +1,8 @@
+import { Router } from 'express';
 import { welcome } from '../controllers/home.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
-import router from './contacts.js';
+
+const router = Router();
 
 router.get('/', ctrlWrapper(welcome));
 
