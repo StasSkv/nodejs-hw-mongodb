@@ -1,0 +1,94 @@
+tags:
+  - Contacts
+summary: Update a contact partially
+operationId: updateContact
+description: Update one or more fields of a contact by its id
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: '65ca67e7ae7f10c88b598384'
+requestBody:
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Contact name
+            example: Jane Doe
+          phoneNumber:
+            type: string
+            description: Contact phone number
+            example: '+380991234567'
+          email:
+            type: string
+            description: Contact email
+            example: jane.doe@example.com
+          isFavourite:
+            type: boolean
+            description: Is contact favourite
+            example: false
+          contactType:
+            type: string
+            enum: [work, home, personal]
+            description: Contact type
+            example: home
+          photo:
+            type: string
+            format: binary
+            description: Contact photo
+    application/json:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            example: Jane Doe
+          phoneNumber:
+            type: string
+            example: '+380991234567'
+          email:
+            type: string
+            example: jane.doe@example.com
+          isFavourite:
+            type: boolean
+            example: false
+          contactType:
+            type: string
+            enum: [work, home, personal]
+            example: home
+responses:
+  '200':
+    description: Successfully updated contact
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully updated contact!
+            data:
+              $ref: '../../../components/schemas/contact.yaml'
+  '400':
+    $ref: '../../../components/responses/400.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'
+  '404':
+    $ref: '../../../components/responses/404.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'
