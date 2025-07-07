@@ -59,7 +59,7 @@ export const createContactController = async (req, res) => {
   res.status(201).json({
     status: 201,
     message: 'Successfully created a contact!',
-    data: result.contact,
+    data: result,
   });
 };
 
@@ -74,7 +74,7 @@ export const patchContactController = async (req, res) => {
   res.status(200).json({
     status: 200,
     message: 'Successfully patched a contact!',
-    data: result.contact,
+    data: result,
   });
 };
 
