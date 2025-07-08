@@ -211,8 +211,7 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "contactType",
-                  "userId"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
@@ -244,11 +243,6 @@
                       "personal"
                     ],
                     "example": "work"
-                  },
-                  "userId": {
-                    "description": "User id",
-                    "type": "string",
-                    "example": "65ca67e7ae7f10c88b598384"
                   },
                   "photo": {
                     "description": "Contact photo",
